@@ -16,7 +16,7 @@
 #include "speed_planning.hpp"
 #include "manual_ctrl.hpp"
 #include "base_mc.hpp"
-// #include "controlcan.h"
+#include "serial_comm.hpp"
 #include "VCU.h"
 
 namespace motion{
@@ -31,6 +31,9 @@ private:
     // 单例模式成员变量
     static CarCtrl* pCarCtrlSingleton;
     static bool is_instance_idle;
+
+    // 定义变量
+    bool is_serial_init;
 
     // 成员变量
     double v_auto_;
@@ -81,7 +84,7 @@ public:
     /// @brief 初始化运动控制模块
     /// @param chassis 底盘类型
     /// @return 返回0成功，其余失败
-    int initMotionCtrlSystem(CAR_CHASSIS_TYPE chassis);
+    int initMotionCtrlSystem(CAR_CHASSIS_TYPE chassis, const char* dev_serial);
 
     /// @brief 获取当前车辆状态
     /// @param mode 车辆当前的运行模式

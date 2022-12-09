@@ -12,7 +12,7 @@ int main(int argc, char* argv[])
     // google::ShutdownGoogleLogging();
 
     motion::CarCtrl *pCarCtrl = motion::CarCtrl::getInstance();
-    pCarCtrl->initMotionCtrlSystem(motion::CHASSIS_DIFF);
+    pCarCtrl->initMotionCtrlSystem(motion::CHASSIS_DIFF, "/dev/pts/3");
     pCarCtrl->switchMode(motion::MODE_MANUAL);
     pCarCtrl->start();
     long start_time = motion::getUsTime();
